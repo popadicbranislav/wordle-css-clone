@@ -1,0 +1,154 @@
+:root {
+  --tile-size: 3rem;
+  --gap-size: 0.2rem;
+
+  --key-gap: 0.4em;
+
+  --clr-text: rgb(214, 214, 214);
+  --clr-bg: rgb(15, 15, 15);
+
+  --clr-outline: rgb(97, 97, 97);
+
+  --clr-absent: rgb(121, 120, 120);
+  --clr-present: rgb(189, 161, 4);
+  --clr-correct: rgb(29, 117, 29);
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  font-family: sans-serif;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 30rem;
+  margin: 0 auto;
+}
+
+.header {
+  --height: 3rem;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+  min-height: var(--height);
+
+  border-bottom: 0.1rem solid var(--clr-outline);
+
+  &__menu {
+    display: flex;
+
+    button {
+      border: 0;
+      background: 0;
+      color: lightgrey;
+      margin: 0 0.5rem;
+      padding: 0.2rem;
+
+      cursor: pointer;
+      font-weight: bold;
+    }
+  }
+
+  .title {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    z-index: -1;
+
+    line-height: var(--height);
+    text-transform: uppercase;
+  }
+}
+
+.board {
+  padding: 1rem;
+  flex: 1;
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: var(--gap-size);
+
+  .word {
+    display: flex;
+    gap: var(--gap-size);
+
+    .letter {
+      flex: 1;
+      width: 3rem;
+      height: 3rem;
+
+      line-height: 3rem;
+      text-align: center;
+
+      user-select: none;
+      font-weight: 900;
+      font-size: 2rem;
+
+      background-color: var(--clr-bg);
+      border: 0.1rem solid var(--clr-outline);
+      text-transform: uppercase;
+
+      &--absent {
+        background-color: var(--clr-absent);
+      }
+
+      &--present {
+        background-color: var(--clr-present);
+      }
+
+      &--correct {
+        background-color: var(--clr-correct);
+      }
+    }
+  }
+}
+
+.keyboard {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--key-gap);
+
+  &__row {
+    display: flex;
+    gap: var(--key-gap);
+  }
+
+  .spacer {
+    flex: 0.5;
+  }
+
+  &__key {
+    flex: 1 1 auto;
+    font-size: 0.8rem;
+    padding: 1em 0;
+    background: grey;
+
+    line-height: 2em;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 0.3rem;
+  }
+}
